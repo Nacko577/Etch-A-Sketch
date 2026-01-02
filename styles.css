@@ -19,19 +19,41 @@ h1 {
 }
 
 .grid-container {
+    /* Configurable number of cells per row */
+    --grid-size: 16;
     width: min(80vmin, 640px);
     display: flex;
     flex-wrap: wrap;
 }
 
 .square {
-    flex: 0 0 calc(100% / 16);
+    flex: 0 0 calc(100% / var(--grid-size));
     aspect-ratio: 1 / 1;
     border: 1px solid #ddd;
     background: #fafafa;
 }
 
 .square:hover { background: #e9f3ff; }
+
+/* Controls */
+.controls {
+    width: min(80vmin, 640px);
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 4px;
+}
+
+.controls button {
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    background: #fff;
+    cursor: pointer;
+}
+
+.controls button:hover {
+    background: #f3f6ff;
+}
 
 /* Active state when hovered over */
 .square.active {
