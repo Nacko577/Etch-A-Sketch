@@ -7,13 +7,36 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1>Etch-A-Sketch</h1>
-  
-  <div id="controls" class="controls">
-    <button id="new-grid-btn" type="button">New Grid</button>
-  </div>
+  <main class="app">
+    <header class="app-header">
+      <h1>Etch-A-Sketch</h1>
+      <p class="tagline">Pixel drawing — click & drag to draw</p>
+    </header>
 
-  <div id="grid-container" class="grid-container" aria-label="Grid"></div>
+    <div id="controls" class="controls">
+      <div class="controls-left">
+        <button id="new-grid-btn" type="button">New Grid</button>
+        <button id="clear-btn" type="button">Clear</button>
+
+      <div class="zoom-controls" aria-hidden="false">
+        <button id="zoom-out-btn" class="zoom-btn" aria-label="Zoom out">-</button>
+        <div id="zoom-indicator" class="zoom-indicator">100%</div>
+        <button id="zoom-in-btn" class="zoom-btn" aria-label="Zoom in">+</button>
+      </div>
+        <label for="color-picker" class="color-label">Color</label>
+        <input id="color-picker" type="color" value="#222222" aria-label="Pick pen color">
+        <div id="color-swatch" class="color-swatch" aria-hidden="true" style="background:#222222"></div>
+
+        <button id="erase-btn" type="button" aria-pressed="false">Erase</button>
+        <div id="mode-indicator" class="mode-indicator">Mode: Draw</div>
+      </div>
+    </div>
+
+    <div id="grid-card" class="grid-card">
+      <div id="grid-container" class="grid-container" aria-label="Grid"></div>
+    </div>
+
+  </main>
 
   <script src="script.js"></script>
 </body>
