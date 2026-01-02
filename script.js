@@ -2,6 +2,21 @@ document.addEventListener('DOMContentLoaded', function () {
   const container = document.getElementById('grid-container');
   const newGridBtn = document.getElementById('new-grid-btn');
 
+  // Check if left mouse button is pressed
+  let isDrawing = false;
+
+  // Start drawing when left button is pressed inside the container
+  container.addEventListener('mousedown', (e) => {
+    if (e.button !== 0) return; // only left button begins drawing
+    e.preventDefault(); // prevent text selection while dragging
+    isDrawing = true;
+  });
+
+  // Stop drawing when the mouse button is released anywhere
+  document.addEventListener('mouseup', () => {
+    isDrawing = false;
+  });
+
   // Build grid of `size x size` squares inside the container
   function createGrid(size) {
     // Guard and clamp size to [1, 100]
@@ -19,9 +34,18 @@ document.addEventListener('DOMContentLoaded', function () {
       const cell = document.createElement('div');
       cell.className = 'square';
 
-      // Add persistent hover behavior (pen effect)
-      cell.addEventListener('mouseenter', () => {
+      // Draw on mousedown and while dragging (click-and-drag)
+      cell.addEventListener('mousedown', (e) => {
+        if (e.button !== 0) return; // only left button
+        e.preventDefault();
+        isDrawing = true;
         cell.classList.add('active');
+      });
+
+      cell.addEventListener('mouseenter', () => {
+        if (isDrawing) {
+          cell.classList.add('active');
+        }
       });
 
       container.appendChild(cell);
