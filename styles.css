@@ -32,3 +32,9 @@ h1 {
 }
 
 .square:hover { background: #e9f3ff; }
+
+/* Active state when hovered over */
+.square.active {
+    background: #222;
+    border-color: #222;
+}

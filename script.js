@@ -8,6 +8,11 @@ document.addEventListener('DOMContentLoaded', function () {
     const cell = document.createElement('div');
     cell.className = 'square';
 
+    // Add hover effect to color over cells
+    cell.addEventListener('mouseenter', () => {
+      cell.classList.add('active');
+    });
+
     container.appendChild(cell);
   }
 });
